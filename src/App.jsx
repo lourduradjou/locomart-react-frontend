@@ -9,6 +9,7 @@ import CategoryProduct from './pages/CategoryProduct'
 import Layout from './components/ui/Layout'
 
 import Toast from './components/ui/Toast'
+import ProfilePage from './pages/ProfilePage'
 
 function App() {
 	return (
@@ -16,13 +17,14 @@ function App() {
 			<main className='bg-black min-h-screen'>
 				<Router>
 					<Routes>
-						<Route element={<Layout />}>
+						{/* <Route element={<Layout />}>
 							<Route path='/' element={<HomePage />} />
 							<Route
 								path='/product/:id'
 								element={<CategoryProduct />}
 							/>
-						</Route>
+						</Route> */}
+						<Route path='/profile' element={<ProfilePage/>} />
 					</Routes>
 				</Router>
 				<Toast />

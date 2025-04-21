@@ -1,0 +1,22 @@
+{
+  "user": {
+    "name": "Gokulakumar G",
+    "email": "gokulakumar.g864@ptuniv.edu.in",
+    "image": "https://i.pravatar.cc/150?img=10",
+    "address": "123 MG Road, Bangalore, Karnataka, 560001"
+  },
+  "orders": [
+    {
+      "id": "1",
+      "item": "Fruits & Vegetables",
+      "date": "2025-04-15",
+      "status": "Delivered"
+    },
+    {
+      "id": "2",
+      "item": "Dairy & Eggs",
+      "date": "2025-04-17",
+      "status": "Delivered"
+    }
+  ]
+}
