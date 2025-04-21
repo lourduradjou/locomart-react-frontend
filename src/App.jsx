@@ -1,29 +1,34 @@
 import React from 'react'
-import './index.css'
-import HomePage from './pages/HomePage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
-export default function App() {
-	return <>
-	<HomePage />
-	</>
+import './index.css'
+import HomePage from './pages/HomePage'
+import CategoryProduct from './pages/CategoryProduct'
+import Layout from './components/ui/Layout'
+
+import Toast from './components/ui/Toast'
+
+function App() {
+	return (
+		<Provider store={store}>
+			<main className='bg-black min-h-screen'>
+				<Router>
+					<Routes>
+						<Route element={<Layout />}>
+							<Route path='/' element={<HomePage />} />
+							<Route
+								path='/product/:id'
+								element={<CategoryProduct />}
+							/>
+						</Route>
+					</Routes>
+				</Router>
+				<Toast />
+			</main>
+		</Provider>
+	)
 }
 
-
-
-// for testing purpose i used this
-
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import CategoryProduct from './pages/CategoryProduct';
-
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/product/:id" element={<CategoryProduct />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
+export default App
