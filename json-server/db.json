@@ -1,0 +1,101 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Aarokya Milk",
+        "type": "milk",
+        "quantity": "500 ml",
+        "price": "23",
+        "description": "Fresh and pure cow's milk from Aarokya, known for its rich taste and quality assurance."
+      },
+      {
+        "id": 2,
+        "name": "Ammaiyar Milk",
+        "type": "milk",
+        "quantity": "500 ml",
+        "price": "25",
+        "description": "Locally sourced milk from Ammaiyar brand, ensuring freshness and traditional dairy values."
+      },
+      {
+        "id": 3,
+        "name": "Heritage Milk",
+        "type": "milk",
+        "quantity": "1 litre",
+        "price": "44",
+        "description": "Full cream milk from Heritage, ideal for daily use and packed with nutrients."
+      },
+      {
+        "id": 4,
+        "name": "Aavin Milk",
+        "type": "milk",
+        "quantity": "500 ml",
+        "price": "24",
+        "description": "A trusted Tamil Nadu government dairy product, Aavin milk is known for its consistent quality."
+      },
+      {
+        "id": 5,
+        "name": "Green Gold Milk",
+        "type": "milk",
+        "quantity": "1 litre",
+        "price": "45",
+        "description": "Organic and farm-fresh milk from Green Gold, perfect for health-conscious consumers."
+      },
+      {
+        "id": 6,
+        "name": "Tropicana Orange",
+        "type": "juice",
+        "quantity": "1 litre",
+        "price": "110",
+        "description": "Tropicana's 100% orange juice with no added sugar, packed with Vitamin C."
+      },
+      {
+        "id": 7,
+        "name": "Maaza Mango",
+        "type": "juice",
+        "quantity": "600 ml",
+        "price": "35",
+        "description": "Classic mango drink with real mango pulp, a refreshing summer favorite."
+      },
+      {
+        "id": 8,
+        "name": "Real Mixed Fruit",
+        "type": "juice",
+        "quantity": "1 litre",
+        "price": "99",
+        "description": "A delicious blend of multiple fruits, Real Mixed Fruit juice is a nutrient-rich beverage."
+      },
+      {
+        "id": 9,
+        "name": "Minute Maid Apple",
+        "type": "juice",
+        "quantity": "500 ml",
+        "price": "55",
+        "description": "Refreshing apple juice from Minute Maid, made with real fruit extract."
+      },
+      {
+        "id": 10,
+        "name": "Nestle Dahi",
+        "type": "curd",
+        "quantity": "400 g",
+        "price": "30",
+        "description": "Creamy and smooth curd from Nestle, rich in probiotics and calcium."
+      },
+      {
+        "id": 11,
+        "name": "Amul Ghee",
+        "type": "ghee",
+        "quantity": "500 ml",
+        "price": "270",
+        "description": "Pure and aromatic ghee from Amul, made from cow’s milk – ideal for cooking and rituals."
+      },
+      {
+        "id": 12,
+        "name": "Aavin Butter",
+        "type": "butter",
+        "quantity": "100 g",
+        "price": "50",
+        "description": "Creamy butter from Aavin, perfect for spreading, baking, and cooking."
+      }
+    ]
+  }
+  
