@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import VendorService from '../services/VendorService';
+import VendorService from '../services/VendorService1';
 import '../components/css/VendorPage.css';
 
 const VendorPage = () => {
