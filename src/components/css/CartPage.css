@@ -1,37 +1,209 @@
-/* Entire page container */
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /* soft texture */
+  background-color: #f0f4f8;
+  background-size: cover;
+  background-repeat: repeat;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* Cart Page Container */
 .cart-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;
-  min-height: 100vh;
+  gap: 40px;
+  background-color: #ffffff; /* white box on background */
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* Page heading */
+/* Heading */
 .cart-page h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: #111827;
 }
 
-/* Cart items layout */
+/* Cart Items Container */
 .cart-items {
-  width: 100%;
-  max-width: 800px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+}
+  
+/* Cart Card Style */
+.cart-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 32px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
 }
 
-/* Total price display */
-.cart-total {
-  margin-top: 30px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #222;
-  background-color: #ffffff;
-  padding: 15px 25px;
+.cart-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Product Info */
+.cart-card-details {
+  flex: 1;
+}
+
+.cart-card-details h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.cart-card-details p {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* Action Area */
+.cart-card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  min-width: 180px;
+}
+
+/* Quantity Selector */
+.quantity-control {
+  display: flex;
+  border: 1px solid #d1d5db;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+.quantity-control button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.quantity-control button:hover {
+  background-color: #2563eb;
+}
+
+.quantity-control input[type="number"] {
+  width: 60px;
+  border: none;
+  text-align: center;
+  background: #ffffff;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+
+/* Remove Button */
+.remove-item-btn {
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  }
+
+.remove-item-btn:hover {
+  background-color: #b91c1c;
+}
+
+/* Cart Total Section */
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.cart-total p {
+  margin: 0;
+}
+
+/* Checkout Button */
+.checkout-button {
+  background-color: #10b981;
+  color: #ffffff;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+}
+
+.checkout-button:hover {
+  background-color: #059669;
+}
+
+.checkout-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cart-page {
+    padding: 30px 16px;
+  }
+
+  .cart-card {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cart-card-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .cart-total {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .checkout-button {
+    width: 100%;
+  }
 }

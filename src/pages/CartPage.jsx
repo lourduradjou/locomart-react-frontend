@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CartCard from '../components/ui/CartCard';  // Assuming you have a CartCard component
+import CartCard from '../components/ui/CartCard';
 import cartService from '../services/CartService';
 import '../components/css/CartPage.css';
 
@@ -7,14 +7,12 @@ const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // Fetch cart data on component mount
   useEffect(() => {
     const fetchCartData = async () => {
       try {
         const data = await cartService.getCartData();
-        console.log(data);
-        setCartItems(data);  // Ensure it's an array if 'data.cart' is undefined
-        calculateTotalPrice(data);  // Calculate total price with an empty array fallback
+        setCartItems(data);
+        calculateTotalPrice(data);
       } catch (error) {
         console.error('Error fetching cart data:', error);
       }
@@ -23,37 +21,44 @@ const CartPage = () => {
     fetchCartData();
   }, []);
 
-  // Calculate the total price of all items in the cart
   const calculateTotalPrice = (items) => {
     if (Array.isArray(items)) {
-      const total = items.reduce((sum, item) => sum + (item.pricePerUnit * item.quantity), 0);
-      console.log(total);
-      setTotalPrice(total); // Update the total price
+      const total = items.reduce(
+        (sum, item) => sum + item.pricePerUnit * item.quantity,
+        0
+      );
+      setTotalPrice(total);
     }
   };
 
-  // Handle quantity update
   const handleUpdateQuantity = (updatedItem) => {
-    setCartItems((prevItems) => prevItems.map((item) => 
+    const updatedCart = cartItems.map((item) =>
       item.id === updatedItem.id ? updatedItem : item
-    ));
-    calculateTotalPrice(cartItems);  // Recalculate the total price after update
+    );
+    setCartItems(updatedCart);
+    calculateTotalPrice(updatedCart);
   };
 
-  // Handle item removal
   const handleRemoveItem = async (itemId) => {
     try {
       await cartService.removeCartItem(itemId);
-      setCartItems(cartItems.filter(item => item.id !== itemId));  // Remove item from state
-      calculateTotalPrice(cartItems);  // Recalculate the total price
+      const updatedCart = cartItems.filter((item) => item.id !== itemId);
+      setCartItems(updatedCart);
+      calculateTotalPrice(updatedCart);
     } catch (error) {
       console.error('Error removing cart item:', error);
     }
   };
 
+  const handleCheckout = () => {
+    // You can replace this with navigation to a payment/delivery page
+    alert('Proceeding to checkout...');
+  };
+
   return (
     <div className="cart-page">
       <h2>Your Cart</h2>
+
       <div className="cart-items">
         {cartItems.length === 0 ? (
           <p>Your cart is empty.</p>
@@ -68,8 +73,15 @@ const CartPage = () => {
           ))
         )}
       </div>
+
       <div className="cart-total">
         <p>Total Price: ₹{totalPrice}</p>
+
+        {cartItems.length > 0 && (
+          <button className="checkout-button" onClick={handleCheckout}>
+            Proceed to Checkout
+          </button>
+        )}
       </div>
     </div>
   );
