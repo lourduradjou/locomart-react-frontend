@@ -1,0 +1,91 @@
+.cart-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+  }
+  
+  .cart-card:hover {
+    transform: scale(1.01);
+  }
+  
+  .cart-card-details {
+    flex: 2;
+  }
+  
+  .cart-card-details h3 {
+    margin: 0 0 5px;
+    font-size: 1.3rem;
+    color: #222;
+  }
+  
+  .cart-card-details p {
+    margin: 4px 0;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  .cart-card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    flex: 1;
+  }
+  
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .quantity-control button {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .quantity-control button:hover {
+    background-color: #0056b3;
+  }
+  
+  .quantity-control input[type="number"] {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    appearance: textfield;
+  }
+  
+  .quantity-control input::-webkit-outer-spin-button,
+  .quantity-control input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .remove-item-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .remove-item-btn:hover {
+    background-color: #a71d2a;
+  }
+  

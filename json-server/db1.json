@@ -5,6 +5,48 @@
     "image": "https://i.pravatar.cc/150?img=10",
     "address": "123 MG Road, Bangalore, Karnataka, 560001"
   },
+  "cart": [
+    {
+      "id": "c1",
+      "item": "Aarokya Milk",
+      "category": "milk",
+      "quantity": 4,
+      "pricePerUnit": 23,
+      "totalPrice": null
+    },
+    {
+      "id": "c2",
+      "item": "Tropicana Orange",
+      "category": "juice",
+      "quantity": 1,
+      "pricePerUnit": 110,
+      "totalPrice": 110
+    },
+    {
+      "id": "c3",
+      "item": "Amul Ghee",
+      "category": "ghee",
+      "quantity": 1,
+      "pricePerUnit": 270,
+      "totalPrice": 270
+    },
+    {
+      "id": "c4",
+      "item": "Real Mixed Fruit",
+      "category": "juice",
+      "quantity": 2,
+      "pricePerUnit": 99,
+      "totalPrice": 198
+    },
+    {
+      "id": "c5",
+      "item": "Nestle Dahi",
+      "category": "curd",
+      "quantity": 3,
+      "pricePerUnit": 30,
+      "totalPrice": 90
+    }
+  ],
   "orders": [
     {
       "id": "1",
