@@ -26,6 +26,24 @@ class Profile {
     const response = await axios.put(`${PROFILE_API_URL}/user`, updatedUser);
     return response.data;
   }
+
+  // Fetch payments data
+  async getPaymentsData() {
+    const response = await axios.get(`${PROFILE_API_URL}/payments`);
+    return response.data;
+  }
+
+  // Update the profile image
+  async updateProfileImage(imageURL) {
+    try {
+      // You would ideally send this to the server, and here we're simulating it
+      const response = await axios.put(`${PROFILE_API_URL}/user/image`, { image: imageURL });
+      return response.data; // Assuming the backend returns the updated user data
+    } catch (error) {
+      console.error('Error updating profile image', error);
+      throw error;
+    }
+  }
 }
 
 const ProfileService = new Profile();

@@ -1,0 +1,78 @@
+/* Basic page styling */
+.orders-page {
+  background-color: #fff;
+  padding: 15px;  /* Reduced padding around the page */
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.orders-page h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 15px; /* Reduced space between title and orders */
+  color: #333;
+}
+
+/* Loader styling */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Styling for each order card */
+.orders-container {
+  display: flex;
+  flex-direction: column; /* Stack cards vertically */
+  align-items: center;    /* Center cards horizontally */
+  gap: 8px;               /* Reduced gap between cards */
+  width: 100%;
+}
+
+/* Styling for individual order cards */
+.orders-container .order-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+  padding: 12px;  /* Adjusted padding inside the card */
+  width: 100%;    /* Full width, adjustable as needed */
+  max-width: 320px;  /* Set a max width for the card */
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 8px; /* Reduced margin between cards */
+  text-align: center;
+}
+
+.orders-container .order-card:hover {
+  transform: translateY(-2px); /* Reduced hover effect */
+}
+
+/* Order title styling */
+.orders-container .order-card h3 {
+  font-size: 1.3rem;  /* Slightly smaller heading */
+  color: #333;
+  margin-bottom: 8px;  /* Reduced space after the title */
+}
+
+/* Order description styling */
+.orders-container .order-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 8px; /* Reduced space between order details */
+}
+
+/* Order details container styling */
+.orders-container .order-card .order-details {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 8px; /* Reduced space after details */
+}
+
+/* Message when no orders found */
+.no-orders-message {
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;  /* Slightly smaller message font */
+  margin-top: 30px;
+}

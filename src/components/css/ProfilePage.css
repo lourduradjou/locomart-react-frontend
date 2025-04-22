@@ -1,163 +1,164 @@
-/* Profile Page Container */
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3f4f6; /* Soft background color for a clean look */
+  color: #34495e; /* Darker text for contrast */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+
+/* Profile Container */
 .profile-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 40px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: 'Roboto', Arial, sans-serif;
-  transition: all 0.3s ease;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  transition: transform 0.3s ease;
 }
 
-/* Section Titles */
-h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 15px;
-  text-align: center;
+.profile-container:hover {
+  transform: translateY(-10px); /* Slight lift effect */
 }
 
-.profile-container h2 {
-  font-size: 2rem;
-  color: #333;
-  text-align: center;
-  margin-bottom: 15px;
+/* Profile Section */
+.profile-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.profile-container p {
-  font-size: 1rem;
-  color: #777;
-  text-align: center;
-  margin-bottom: 20px;
+/* Orders, Payments, Logout Section */
+.orders-toggle, .payments-toggle, .logout-section {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-/* Buttons */
-button {
-  padding: 12px 20px;
-  font-size: 1rem;
-  background-color: #28a745;
+/* Button Styles */
+.btn {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  background-color: #3498db; /* Soft blue for the buttons */
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin: 20px auto;
-  display: block;
-  width: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover {
-  background-color: #218838;
-  transform: translateY(-3px);
+.btn:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2); /* Subtle shadow effect */
 }
 
-button:focus {
+.btn:focus {
   outline: none;
 }
 
-/* Orders Section */
-.orders-section {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+.logout-btn {
+  background-color: #e74c3c; /* Red for logout */
 }
 
-.orders-section p {
-  font-size: 1rem;
-  color: #777;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.orders-section .order-card {
-  margin-bottom: 20px;
+.logout-btn:hover {
+  background-color: #c0392b; /* Darker red for logout hover */
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
 }
 
 /* Profile Card */
 .profile-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Softer shadow for cards */
   text-align: center;
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-/* Profile Image */
+.profile-card:hover {
+  transform: translateY(-6px); /* Slight lift effect for profile card */
+}
+
 .profile-card img {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  margin-bottom: 20px;
-  border: 4px solid #007bff;
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  border: 5px solid #3498db;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
 }
 
 .profile-card img:hover {
-  border-color: #0056b3;
+  transform: scale(1.1);
 }
 
-/* Profile Name and Details */
 .profile-card h2 {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .profile-card p {
-  font-size: 1rem;
-  color: #777;
-  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 15px;
 }
 
-/* Profile Edit Button */
 .profile-card button {
-  padding: 12px 20px;
-  background-color: #007bff;
+  padding: 14px 22px;
+  background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  margin-top: 20px;
-  width: 100%;
-}
-
-.profile-card button:hover {
-  background-color: #0056b3;
-  transform: translateY(-3px);
-}
-
-.profile-card button:focus {
-  outline: none;
-}
-
-/* Logout Button */
-.logout-btn {
-  background-color: #dc3545;
-  color: white;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 20px;
-  width: 50%;
+  font-size: 1.1rem;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.logout-btn:hover {
-  background-color: #c82333;
-  transform: translateY(-3px);
+.profile-card button:hover {
+  background-color: #2980b9;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
 }
 
-.logout-btn:focus {
-  outline: none;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+  }
+
+  .profile-card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .profile-card p {
+    font-size: 1rem;
+  }
 }

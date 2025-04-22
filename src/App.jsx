@@ -7,10 +7,12 @@ import './index.css'
 import HomePage from './pages/HomePage'
 import CategoryProduct from './pages/CategoryProduct'
 import Layout from './components/ui/Layout'
-
+import OrdersPage from './pages/ProfileOrder'
+import PaymentsPage from './pages/ProfilePayment'
 import Toast from './components/ui/Toast'
 import ProfilePage from './pages/ProfilePage'
 import CartPage from './pages/CartPage'
+import VendorPage from './pages/VendorPage'
 
 function App() {
 	return (
@@ -27,6 +29,9 @@ function App() {
 						</Route>
 						<Route path='/profile' element={<ProfilePage/>} />
 						<Route path='/cart' element={<CartPage/>} />
+						<Route path="/profile/orders" element={<OrdersPage />} />
+						<Route path="/profile/payments" element={<PaymentsPage />} />
+						<Route path='/vendor' element={<VendorPage/>} />
 					</Routes>
 				</Router>
 				<Toast />

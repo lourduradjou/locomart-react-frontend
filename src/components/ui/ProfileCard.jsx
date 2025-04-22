@@ -21,9 +21,44 @@ const ProfileCard = ({ user, onProfileUpdate }) => {
     }
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        const updatedUser = { ...user, image: reader.result }; // Base64 encoded image
+        setFormData(updatedUser);
+        
+        // Optionally update the image on the server
+        try {
+          await ProfileService.updateUserData(updatedUser); // Assuming backend updates the image
+          onProfileUpdate(updatedUser);
+        } catch (error) {
+          console.error('Failed to update profile image on the server:', error);
+        }
+      };
+      reader.readAsDataURL(file); // Convert image file to base64 string
+    }
+  };
+
   return (
     <div className="profile-card">
-      <img src={user.image} alt="Profile" className="profile-img" />
+      <div className="profile-img-container">
+        <img
+          src={user.image}
+          alt="Profile"
+          className="profile-img"
+          onClick={() => document.getElementById('image-upload').click()}
+        />
+        <input
+          type="file"
+          id="image-upload"
+          accept="image/*"
+          style={{ display: 'none' }}
+          onChange={handleImageChange}
+        />
+      </div>
+
       {isEditing ? (
         <>
           <input type="text" name="name" value={formData.name} onChange={handleChange} />

@@ -1,0 +1,70 @@
+/* Basic page styling */
+.payments-page {
+  background-color: #fff;
+  padding: 20px;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.payments-page h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Loader styling */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Styling for each payment card */
+.payments-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.payments-container .payment-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 300px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.payments-container .payment-card:hover {
+  transform: translateY(-10px);
+}
+
+.payments-container .payment-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.payments-container .payment-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.payments-container .payment-card .payment-details {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Message when no payments found */
+.no-payments-message {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 30px;
+}
