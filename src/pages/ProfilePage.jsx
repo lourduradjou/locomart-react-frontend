@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import ProfileCard from '../components/ui/ProfileCard';
 import '../components/css/ProfilePage.css';
 import ProfileService from '../services/ProfileService';
+import OrdersPage from '../pages/ProfileOrder';  // Import OrdersPage
+import PaymentsPage from '../pages/ProfilePayment';  // Import PaymentsPage
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [showOrders, setShowOrders] = useState(false);  // State to toggle orders visibility
+  const [showPayments, setShowPayments] = useState(false);  // State to toggle payments visibility
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -30,11 +34,13 @@ const ProfilePage = () => {
   };
 
   const handleOrdersClick = () => {
-    navigate('/profile/orders');  // Navigate to OrdersPage
+    setShowOrders(!showOrders);  // Toggle orders visibility
+    setShowPayments(false);  // Hide payments if orders are being shown
   };
 
   const handlePaymentsClick = () => {
-    navigate('/profile/payments');  // Navigate to PaymentsPage
+    setShowPayments(!showPayments);  // Toggle payments visibility
+    setShowOrders(false);  // Hide orders if payments are being shown
   };
 
   if (!user) {
@@ -43,27 +49,33 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
-      <section className="profile-section">
+      <div className="sidebar">
+      <div className="profile-avatar">
+         <img
+            src={user.image || 'https://via.placeholder.com/100'} // Fallback image
+            alt="Profile"
+            className="sidebar-profile-img"
+            onClick={() => document.getElementById('image-upload').click()}
+        />
+      </div>
+
+        <div className="profile-name">{user.name}</div>
+        <div className="sidebar-nav">
+          <a href="#" onClick={handleOrdersClick}>My Orders</a>
+          <a href="#" onClick={handlePaymentsClick}>Payment History</a>
+          <a href="#" onClick={handleLogout}>Logout</a>
+        </div>
+      </div>
+
+      <div className="main-content">
+        <div className="top-bar">
+          <h2>Profile</h2>
+          
+        </div>
         <ProfileCard user={user} onProfileUpdate={handleProfileUpdate} />
-      </section>
-
-      <section className="orders-toggle">
-        <button className="btn" onClick={handleOrdersClick}>
-          My Orders
-        </button>
-      </section>
-
-      <section className="payments-toggle">
-        <button className="btn" onClick={handlePaymentsClick}>
-          Payment History
-        </button>
-      </section>
-
-      <section className="logout-section">
-        <button className="btn logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
-      </section>
+        {showOrders && <OrdersPage userId={user.id} />}  
+        {showPayments && <PaymentsPage userId={user.id} />}  
+      </div>
     </div>
   );
 };
