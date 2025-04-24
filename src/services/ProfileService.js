@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const PROFILE_API_URL = 'http://localhost:5000'
+const PROFILE_API_URL = 'http://localhost:8000'
 
 class Profile {
     // Fetch user data
-    async getUserData() {
-        const response = await axios.get(`${PROFILE_API_URL}/user`)
+    async getUserData(id) {
+        const response = await axios.get(`${PROFILE_API_URL}/customer/${id}`)
         return response.data
     }
 
