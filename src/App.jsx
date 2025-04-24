@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -16,11 +16,31 @@ import ProfilePage from './pages/ProfilePage'
 import CartPage from './pages/CartPage'
 import VendorPage from './pages/VendorPage'
 import ProtectedRoutes from './components/ProtectedRoutes.jsx'
+import cartService from './services/CartService.js'
 // import Login from "./components/auth/Login";
 // import SignUp from "./components/auth/SignUp";
 
 function App() {
-    const [cart, setCart] = useState([])
+    const [cartId, setCartId] = useState(null)
+
+    useEffect(() => {
+        const getCartId = async () => {
+            try {
+                const response = await cartService.createNewCart(1)
+                setCartId(response.id)
+            } catch (error) {
+                console.error('Error creating new cart:', error)
+            }
+        }
+        getCartId()
+    }, [])
+
+    useEffect(() => {
+        if (cartId) {
+            localStorage.setItem('cartId', cartId)
+        }
+    }, [cartId])
+
     return (
         <Provider store={store}>
             <Router>

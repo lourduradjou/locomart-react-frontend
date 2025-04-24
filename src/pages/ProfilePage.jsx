@@ -10,11 +10,12 @@ const ProfilePage = () => {
     const [user, setUser] = useState(null)
     const [showOrders, setShowOrders] = useState(false)
     const [showPayments, setShowPayments] = useState(false)
+    const id = localStorage.getItem('userId')
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const userData = await ProfileService.getUserData()
+                const userData = await ProfileService.getUserData(id)
                 setUser(userData)
             } catch (error) {
                 console.error('Failed to load user data:', error)
