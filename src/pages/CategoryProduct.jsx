@@ -12,7 +12,6 @@ const CategoryProduct = () => {
     const [loading, setLoading] = useState(true)
     const [vendor, setVendor] = useState(null)
 
-    // Assuming you have a way to get customerId, e.g., from localStorage or context
     const customerId = localStorage.getItem('customerId')
 
     useEffect(() => {
@@ -36,10 +35,9 @@ const CategoryProduct = () => {
         fetchProductAndSimilar()
     }, [id])
 
-    // Then fetch vendor once product is loaded
     useEffect(() => {
         const fetchVendorDetails = async () => {
-            if (product && product.vendor_id) {
+            if (product?.vendor_id) {
                 try {
                     const vendorData = await VendorService.getVendorById(product.vendor_id)
                     setVendor(vendorData)
@@ -53,47 +51,74 @@ const CategoryProduct = () => {
     }, [product])
 
     return (
-        <main className="category-product-page">
+        <main className="max-w-6xl mx-auto px-4 py-8">
             {loading || !product ? (
-                <p className="loading">Loading products...</p>
+                <div className="flex justify-center items-center h-60">
+                    <p className="text-lg font-medium text-gray-600">Loading products...</p>
+                </div>
             ) : (
                 <>
-                    <div className="product-main-info">
-                        <img src={productimg} alt="product" className="product-image" />
-                        <div className="product-details">
-                            <h2 className="product-name">{product.name}</h2>
-                            <p>
-                                <strong>Quantity:</strong> {product.quantity}
-                            </p>
-                            <p>
-                                <strong>Price:</strong> ₹{product.price}
-                            </p>
-                            <button className="add-to-cart-btn">Add to Cart</button>
+                    {/* Product Info */}
+                    <div className="bg-white shadow-md rounded-xl p-6 mb-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <img
+                            src={productimg}
+                            alt={product.name}
+                            className="w-50 h-50 object-cover rounded-lg"
+                        />
+                        <div className="flex flex-col justify-between">
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                                    {product.name}
+                                </h2>
+                                <p className="text-gray-600 mb-1">
+                                    <strong>Quantity:</strong> {product.quantity}
+                                </p>
+                                <p className="text-gray-600 mb-4">
+                                    <strong>Price:</strong>{' '}
+                                    <span className="text-green-600 font-semibold">
+                                        ₹{product.price}
+                                    </span>
+                                </p>
+                            </div>
+                            <button className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
 
-                    <div className="product-description">
-                        <h2>
-                            <strong>Product Details</strong>
+                    {/* Product Description */}
+                    <div className="bg-white shadow-md rounded-xl p-6 mb-10">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                            Product Details
                         </h2>
-                        <p>{product.description || 'No description available.'}</p>
+                        <p className="text-gray-700">
+                            {product.description || 'No description available.'}
+                        </p>
                     </div>
 
+                    {/* Vendor Info */}
                     {vendor && (
-                        <div className="vendor-description">
-                            <h2>
-                                <strong>Vendor Details</strong>
+                        <div className="bg-white shadow-md rounded-xl p-6 mb-10">
+                            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                                Vendor Details
                             </h2>
-                            <p>{vendor.shopname}</p>
-                            <p>{vendor.email}</p>
-                            <p>{vendor.address}</p>
-                            <p>{vendor.city}</p>
+                            <p className="text-gray-700">
+                                Shop name: <strong>{vendor.shop_name}</strong>
+                            </p>
+                            <p className="text-gray-700">
+                                Email: <strong>{vendor.email}</strong>
+                            </p>
+                            <p className="text-gray-700">
+                                Contact Number: <strong>{vendor.phone_number}</strong>
+                            </p>
+                            <p className="text-gray-700">{vendor.city}</p>
                         </div>
                     )}
 
-                    <div className="more-products">
-                        <h2>
-                            <strong>More products in this category</strong>
+                    {/* More Products */}
+                    <div className="bg-white shadow-md rounded-xl p-6">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                            More products in this category
                         </h2>
                         <ProductFeed products={categorizedProducts} category={product.type} />
                     </div>

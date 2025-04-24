@@ -23,7 +23,9 @@ const ProductFeed = ({ products, category }) => {
             <ul className="flex flex-row space-x-6 overflow-x-auto scrollbar-hide">
                 {products.map((product, index) => (
                     <li key={index}>
-                        <ProductCard product={product} />
+                        <Link to={`/product/${product.id}`}>
+                            <ProductCard product={product} />
+                        </Link>
                     </li>
                 ))}
             </ul>
