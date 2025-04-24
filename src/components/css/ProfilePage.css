@@ -1,164 +1,91 @@
-/* General Styles */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f3f4f6; /* Soft background color for a clean look */
-  color: #34495e; /* Darker text for contrast */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  line-height: 1.6;
-}
+/* ProfilePage.css */
 
-/* Profile Container */
 .profile-container {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 40px;
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+  display: flex;
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background-color: #fff;
+  padding: 30px 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  transition: transform 0.3s ease;
 }
 
-.profile-container:hover {
-  transform: translateY(-10px); /* Slight lift effect */
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-/* Profile Section */
-.profile-section {
+.sidebar-profile-img {
   width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* Orders, Payments, Logout Section */
-.orders-toggle, .payments-toggle, .logout-section {
-  margin-top: 25px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* Button Styles */
-.btn {
-  padding: 14px 28px;
-  font-size: 1.1rem;
-  background-color: #3498db; /* Soft blue for the buttons */
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #2980b9; /* Darker blue on hover */
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2); /* Subtle shadow effect */
-}
-
-.btn:focus {
-  outline: none;
-}
-
-.logout-btn {
-  background-color: #e74c3c; /* Red for logout */
-}
-
-.logout-btn:hover {
-  background-color: #c0392b; /* Darker red for logout hover */
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
-}
-
-/* Profile Card */
-.profile-card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Softer shadow for cards */
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.profile-card:hover {
-  transform: translateY(-6px); /* Slight lift effect for profile card */
-}
-
-.profile-card img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
+  height: 100%;
   object-fit: cover;
-  border: 5px solid #3498db;
-  margin-bottom: 25px;
-  transition: transform 0.3s ease;
-}
-
-.profile-card img:hover {
-  transform: scale(1.1);
-}
-
-.profile-card h2 {
-  font-size: 2.2rem;
-  color: #333;
-  margin-bottom: 12px;
-}
-
-.profile-card p {
-  font-size: 1.1rem;
-  color: #7f8c8d;
-  margin-bottom: 15px;
-}
-
-.profile-card button {
-  padding: 14px 22px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 25px;
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.profile-card button:hover {
-  background-color: #2980b9;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+.profile-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #2f3542;
+  text-align: center;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .profile-container {
-    padding: 20px;
-    margin: 20px;
-  }
+.sidebar-nav a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  color: #3742fa;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
 
-  .btn {
-    width: 100%;
-    padding: 16px;
-    font-size: 1rem;
-  }
+.sidebar-nav a:hover {
+  background-color: #f1f2f6;
+}
 
-  .profile-card img {
-    width: 120px;
-    height: 120px;
-  }
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  background-color: #f5f6fa;
+  overflow-y: auto;
+}
 
-  .profile-card h2 {
-    font-size: 1.8rem;
-  }
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
 
-  .profile-card p {
-    font-size: 1rem;
-  }
+.top-bar h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2f3542;
+}
+
+/* Placeholder for additional styling */
+.profile-card,
+.orders-page,
+.payments-page {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
