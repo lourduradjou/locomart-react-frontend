@@ -1,3 +1,9 @@
 # Ignore artifacts:
-build
+node_modules/
+build/
+docs/
+LICENSE
+README.md
+assets/
+.husky/
 coverage
