@@ -1,21 +1,28 @@
-// used as interceptors (for adding header in the request )
+import axios from 'axios'
 
-import axios from "axios"; //used to make the request to the backend
-
-//create a axios object and mark the baseurl to port 8000(to the backend)
 const api = axios.create({
-  baseURL: "http://localhost:8000/",
-});
+    baseURL: 'http://localhost:8000/', // Adjust as needed
+})
 
-//use the interceptors request in api object and check whether the user is allowed to use the backend , logged in or not
+// Request Interceptor → Always send token if present
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("access"); //get the access token  from the localstorage
-  if (token) {
-    //if token exist , we can make the header authorization part with
-    // that token so that we can allow the user to connect with the backend
-    config.headers.authorization = `Bearer ${token}`;
-  }
-  return config; //return in configuration
-});
+    const token = localStorage.getItem('access')
+    if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`
+    }
+    return config
+})
 
-export default api;
+// Response Interceptor → Redirect to login if 401 Unauthorized
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 401) {
+            localStorage.removeItem('access') // Clear old/invalid token
+            window.location.href = '/login/customer' // Redirect to login
+        }
+        return Promise.reject(error)
+    }
+)
+
+export default api
