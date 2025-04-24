@@ -15,6 +15,7 @@ export default {
         },
         extend: {
             fontFamily: {
+                poppins: ['poppins', 'sans-serif'],
                 palanquin: ['Palanquin', 'sans-serif'],
                 montserrat: ['Montserrat', 'sans-serif'],
             },
