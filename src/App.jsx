@@ -7,7 +7,6 @@ import './index.css'
 import HomePage from './pages/HomePage'
 import CategoryProduct from './pages/CategoryProduct'
 import Layout from './components/ui/Layout'
-import Navbar from './components/ui/Navbar.jsx'
 import Toast from './components/ui/Toast'
 import AllProductsInCategory from './pages/AllProductsInCategory'
 import OrdersPage from './pages/ProfileOrder'
@@ -17,8 +16,11 @@ import CartPage from './pages/CartPage'
 import VendorPage from './pages/VendorPage'
 import ProtectedRoutes from './components/ProtectedRoutes.jsx'
 import cartService from './services/CartService.js'
-// import Login from "./components/auth/Login";
-// import SignUp from "./components/auth/SignUp";
+import LoginVendor from '@/components/auth/LoginVendor'
+import LoginCustomer from '@/components/auth/LoginCustomer'
+import RegisterCustomer from '@/components/auth/RegisterCustomer'
+import RegisterVendor from '@/components/auth/RegisterVendor'
+
 
 function App() {
     const [cartId, setCartId] = useState(null)
@@ -45,19 +47,27 @@ function App() {
         <Provider store={store}>
             <Router>
                 <Routes>
-                    <Route element={<Layout />}>
-                        {/* <Route path="/login" element={<Login />} /> */}
-                        {/* <Route path="/register" element={<SignUp />} /> */}
+                    {/* Public (no Layout) */}
+                    <Route path="/login/customer" element={<LoginCustomer />} />
+                    <Route path="/login/vendor" element={<LoginVendor />} />
+                    <Route path="/register/customer" element={<RegisterCustomer />} />
+                    <Route path="/register/vendor" element={<RegisterVendor />} />
+
+                    {/* Protected / App routes */}
+                    <Route
+                        element={
+                            <ProtectedRoutes>
+                                <Layout />
+                            </ProtectedRoutes>
+                        }
+                    >
                         <Route path="/" element={<HomePage />} />
                         <Route path="/product/:id" element={<CategoryProduct />} />
-                        <Route
-                            path="/product/category/:category"
-                            element={<AllProductsInCategory />}
-                        />
+                        <Route path="/product/category/:cat" element={<AllProductsInCategory />} />
                         <Route path="/profile" element={<ProfilePage />} />
-                        <Route path="/cart" element={<CartPage />} />
                         <Route path="/profile/orders" element={<OrdersPage />} />
                         <Route path="/profile/payments" element={<PaymentsPage />} />
+                        <Route path="/cart" element={<CartPage />} />
                         <Route path="/vendor" element={<VendorPage />} />
                     </Route>
                 </Routes>

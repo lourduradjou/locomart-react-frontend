@@ -15,11 +15,12 @@ export default {
         },
         extend: {
             fontFamily: {
+                poppins: ['poppins', 'sans-serif'],
                 palanquin: ['Palanquin', 'sans-serif'],
                 montserrat: ['Montserrat', 'sans-serif'],
             },
             colors: {
-                primary: '#ECEEFF',
+                primary: '#9ACD32',
                 'coral-red': '#FF6452',
                 'slate-gray': '#6D6D6D',
                 'pale-blue': '#F5F6FF',
