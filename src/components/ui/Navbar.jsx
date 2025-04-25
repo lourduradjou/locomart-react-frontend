@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import { IoMenuOutline } from 'react-icons/io5'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsShopWindow } from 'react-icons/bs'
+import { GrCart } from 'react-icons/gr'
+import logo from '@/assets/logo.png'
 import Search from './Search'
+import { RiContactsLine } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const [nav, setNav] = useState(true)
@@ -21,48 +25,54 @@ const Navbar = () => {
     }
 
     return (
-        <nav className={`bg-slate-50`}>
-            <div className=" flex justify-center items-center  mx-4 max-w-[1240px] md:mx-auto py-4">
-                <div className="">
+        <nav className={`bg-slate-200`}>
+            <div className=" flex justify-center items-center  mx-4 max-w-[1240px] md:mx-auto py-2 tracking-wider">
+                <div className="flex gap-1 items-center justify-center">
+                    <img src={logo} width={34} height={34} alt="logo" />
                     <h1 className="text-xl font-bold tighter-wider">Locomart</h1>
                 </div>
 
                 <Search />
 
                 <ul className="hidden uppercase font-medium md:flex text-black ">
-                    <li className="p-4 hover:text-[#000000] transition-all duration-300">
-                        <button onClick={() => scrollToSection('hero')}>Home</button>
-                    </li>
-                    <li>
+                    <li className="">
                         <button
-                            className="p-4 hover:text-[#000000] transition-all duration-300"
+                            className="p-4 hover:text-[#000000] transition-all duration-300 underLight"
                             onClick={() => scrollToSection('company')}
                         >
-                            Company
+                            <Link to="/ventor">
+                                <div className="flex justify-center items-center gap-2">
+                                    Store
+                                    <BsShopWindow size={20} />
+                                </div>
+                            </Link>
                         </button>
                     </li>
                     <li>
                         <button
-                            className="p-4 hover:text-[#000000] transition-all duration-300"
+                            className="p-4 hover:text-[#000000] transition-all duration-300 underLight"
                             onClick={() => scrollToSection('resources')}
                         >
-                            Resources
+                            <Link to="/cart">
+                                <div className="flex gap-2 justify-center items-center">
+                                    Cart
+                                    <GrCart size={20} />
+                                </div>
+                            </Link>
                         </button>
                     </li>
+
                     <li>
                         <button
-                            className="p-4 hover:text-[#000000] transition-all duration-300"
-                            onClick={() => scrollToSection('footer')}
-                        >
-                            About
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            className="p-4 hover:text-[#000000] transition-all duration-300"
+                            className="p-4 hover:text-[#000000] transition-all duration-300 underLight"
                             onClick={() => scrollToSection('newsletter')}
                         >
-                            Contact
+                            <Link to="/profile">
+                                <div className="flex justify-center items-center gap-2">
+                                    Profile
+                                    <RiContactsLine size={20} />
+                                </div>
+                            </Link>
                         </button>
                     </li>
                 </ul>
