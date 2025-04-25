@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import CartCard from '../components/ui/CartCard'
 import cartService from '../services/CartService'
-
-const user = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    contact: '9999999999',
-}
+import ProductService from '../services/productService'
 
 const CartPage = () => {
     const [cartItems, setCartItems] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
+    const cartId = localStorage.getItem('cartId')
     const [paymentSuccess, setPaymentSuccess] = useState(null)
 
     useEffect(() => {
         const fetchCartData = async () => {
             try {
-                const data = await cartService.getCartData()
+                const data = await cartService.getCartData(cartId)
                 setCartItems(data)
                 calculateTotalPrice(data)
             } catch (error) {
@@ -25,16 +21,23 @@ const CartPage = () => {
         }
 
         fetchCartData()
-    }, [])
+    }, [cartItems])
 
-    const calculateTotalPrice = (items) => {
-        if (Array.isArray(items)) {
-            const total = items.reduce((sum, item) => sum + item.pricePerUnit * item.quantity, 0)
-            setTotalPrice(total)
-        }
+    const calculateTotalPrice = async (items) => {
+        const productPromises = await items.map((item) =>
+            ProductService.getProductById(item.product_id)
+        )
+        const products = await Promise.all(productPromises)
+
+        const total = items.reduce((sum, item, idx) => {
+            return sum + products[idx].price * item.quantity
+        }, 0)
+
+        setTotalPrice(total)
     }
 
-    const handleUpdateQuantity = (updatedItem) => {
+    const handleUpdateQuantity = async (updatedItem) => {
+        const response = cartService.updateCartItem(cartId, updatedItem)
         const updatedCart = cartItems.map((item) =>
             item.id === updatedItem.id ? updatedItem : item
         )
@@ -44,10 +47,11 @@ const CartPage = () => {
 
     const handleRemoveItem = async (itemId) => {
         try {
-            await cartService.removeCartItem(itemId)
+            await cartService.removeCartItem(cartId, itemId)
             const updatedCart = cartItems.filter((item) => item.id !== itemId)
             setCartItems(updatedCart)
             calculateTotalPrice(updatedCart)
+            fetchCartData()
         } catch (error) {
             console.error('Error removing cart item:', error)
         }
@@ -94,21 +98,17 @@ const CartPage = () => {
     }
 
     return (
-        <div className="max-w-6xl mx-auto px-6 py-10">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-8 border-b pb-3">
-                Your Shopping Cart
-            </h2>
+        <div>
+            <div className="cart-page px-4 py-8 max-w-5xl mx-auto">
+                <h2 className="text-3xl font-bold mb-6 text-gray-800">Your Cart</h2>
 
-            <div className="grid md:grid-cols-2 gap-10">
-                <div className="space-y-6">
+                <div className="cart-items space-y-4">
                     {cartItems.length === 0 ? (
-                        <div className="text-center text-gray-500 text-lg">
-                            Your cart is currently empty.
-                        </div>
+                        <p className="text-gray-500 text-lg">Your cart is empty.</p>
                     ) : (
-                        cartItems.map((item) => (
+                        cartItems.map((item, index) => (
                             <CartCard
-                                key={item.id}
+                                key={index} // ✅ fix the key warning
                                 item={item}
                                 onUpdateQuantity={handleUpdateQuantity}
                                 onRemoveItem={handleRemoveItem}
@@ -117,27 +117,10 @@ const CartPage = () => {
                     )}
                 </div>
 
-                <div className="sticky top-6 h-fit bg-white p-6 shadow-xl rounded-2xl border border-gray-200 space-y-6">
-                    <h3 className="text-2xl font-semibold text-gray-800">Order Summary</h3>
-
-                    <ul className="divide-y divide-gray-200">
-                        {cartItems.map((item) => (
-                            <li
-                                key={item.id}
-                                className="flex justify-between py-3 text-sm text-gray-700"
-                            >
-                                <span>
-                                    {item.name} × {item.quantity}
-                                </span>
-                                <span>₹{item.pricePerUnit * item.quantity}</span>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <div className="flex justify-between text-lg font-semibold text-gray-900 pt-4 border-t">
-                        <span>Total:</span>
-                        <span>₹{totalPrice}</span>
-                    </div>
+                <div className="cart-total mt-8 p-4 border rounded-lg shadow-md bg-white">
+                    <p className="text-xl font-semibold text-gray-700">
+                        Total Price: ₹{totalPrice}
+                    </p>
 
                     {cartItems.length > 0 && (
                         <button
