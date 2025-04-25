@@ -97,7 +97,7 @@ function LoginCustomer() {
                         type="submit"
                         className="w-full py-3 mt-6 font-medium text-lg font-montserrat hover:bg-slate-400  bg-slate-50 transition duration-300 ease-in-out"
                     >
-                        <Link to="/register/customer">SignIn as Customer</Link>
+                        <Link to="/register/customer">Register as Customer</Link>
                     </button>
                 </div>
             </div>

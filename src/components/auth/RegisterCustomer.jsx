@@ -79,7 +79,7 @@ function RegisterCustomer() {
                             </button>
                         </div>
                     </form>
-                    <div className="md:col-span-2 font-montserrat font-lg">
+                    <div className="md:col-span-2 font-montserrat font-lg mt-4">
                         <button
                             type="submit"
                             className="w-full  bg-white text-black font-medium text-lg py-3  hover:bg-gray-400 transition duration-300"

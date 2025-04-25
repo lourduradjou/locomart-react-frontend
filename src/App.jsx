@@ -21,7 +21,6 @@ import RegisterCustomer from '@/components/auth/RegisterCustomer'
 import RegisterVendor from '@/components/auth/RegisterVendor'
 
 function App() {
-    const [cart, setCart] = useState([])
     return (
         <Provider store={store}>
             <Router>
